@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Req,HttpCode } from '@nestjs/common';
+import { Controller, Get, Post, Req,HttpCode,Param } from '@nestjs/common';
 
 @Controller('cat')
 export class CatController {
@@ -20,5 +20,11 @@ export class CatController {
     @Get('**')
     findAllWithWildCard(){
         return '🔴 404 Not Found';
+    }
+
+    //Route with parameters
+    @Get(':id')
+    findOne(@Param() params: any): string{
+        return `🟢 This action returns a #${params.id} cat`;
     }
 }
