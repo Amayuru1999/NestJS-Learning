@@ -1,10 +1,11 @@
-import { Controller, Get, Post, Req } from '@nestjs/common';
+import { Controller, Get, Post, Req,HttpCode } from '@nestjs/common';
 
 @Controller('cat')
 export class CatController {
 
 
     @Post()
+    @HttpCode(204)
     create():string{
         return '🟢 Post request is working';
     }
