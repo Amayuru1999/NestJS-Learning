@@ -1,30 +1,12 @@
-import { Controller, Get, Post, Req,HttpCode,Param } from '@nestjs/common';
+import { Controller, Get, Post, Req,HttpCode,Param, Body } from '@nestjs/common';
+import { CreateCatDto } from './dto/create-cat.dto';
 
 @Controller('cat')
 export class CatController {
 
 
     @Post()
-    @HttpCode(204)
-    create():string{
-        return '🟢 Post request is working';
-    }
-
-    @Get()
-    findAll(@Req() request:Request): string {
-        
-        return '🟢 Get request is working';
-    }
-
-    //Route wild card
-    @Get('**')
-    findAllWithWildCard(){
-        return '🔴 404 Not Found';
-    }
-
-    //Route with parameters
-    @Get(':id')
-    findOne(@Param() params: any): string{
-        return `🟢 This action returns a #${params.id} cat`;
+    create(@Body() createCatDto: CreateCatDto) {
+      return '🟢 This action adds a new cat';
     }
 }
